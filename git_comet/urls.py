@@ -19,6 +19,7 @@ from django.urls import path
 from forum.views import forum
 from account.views import account
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('forum/', forum),
