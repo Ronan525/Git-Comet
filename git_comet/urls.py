@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('forum/', forum),
     path('account/', account),
+    path('', forum, name='home'),  # Default path
 ]
