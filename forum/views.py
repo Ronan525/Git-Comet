@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from.models import Post
 
 # Create your views here.
 
-def forum(request):
-    return HttpResponse("Hello, world. You're at the forum index.")
+class PostListView(generic.ListView):
+    model = Post
+    template_name = 'forum/index.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']

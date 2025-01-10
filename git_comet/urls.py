@@ -15,14 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from forum.views import forum
-from account.views import account
-
+from django.urls import path, include
+from forum.views import PostListView  # Import the PostListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('forum/', forum),
-    path('account/', account),
-    path('', forum, name='home'),  # Default path
+    path('forum/', include('forum.urls')),  # Path to forum app
+    path('accounts/', include('django.contrib.auth.urls')),  # Path to Django's built-in authentication views
+    path('', PostListView.as_view(), name='home'),  # Default path
 ]

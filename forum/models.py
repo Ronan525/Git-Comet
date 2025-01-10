@@ -2,13 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
+# This is a tuple of tuples that defines the choices for the status field of the Post model.
 STATUS = (
     (0, "Draft"),
     (1, "Publish")
 )
 
-# Create your models here.
 
+# This is the Post model. It has a ForeignKey to the User model, which means that each post is associated with a single user.
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
@@ -19,7 +20,31 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     date_updated = models.DateTimeField(auto_now=True)
 
+# This will order the posts by date_posted in descending order.
+    class Meta:
+        ordering = ['-date_posted']
+
+# This method will return the title of the post when you call the Post object.
+    def __str__(self):
+        return self.title
+    
+# This method will automatically create a slug for the post when you save it.
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+
+# This is the Comment model. It has a ForeignKey to the Post model, which means that each comment is associated with a single post.
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commenter')
+    content = models.TextField()
+    date_posted = models.DateTimeField(auto_now_add=True)
+    approved_comment = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-date_posted']
+
+    def __str__(self):
+        return self.content
