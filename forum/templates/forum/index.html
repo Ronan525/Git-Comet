@@ -2,6 +2,17 @@
 
 {% block content %}
 
+<header class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="display-4">Welcome to Git Comet</h1>
+                <p class="lead">Objectively subjectively the worlds best coding forum!</p>
+            </div>
+        </div>
+    </div>
+</header>
+
 <!-- index.html content starts here -->
 <div class="container-fluid">
     <div class="row">
@@ -21,9 +32,11 @@
                             <a href="#" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
                             </a>
-
-                            <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on }}</p>
+                            <p class="card-text">{{ post.excerpt }}</p>
+                            <h2 class="card-text">Author: {{ post.author }}</h2>
+                            <hr/>
+                            <p class="card-text text-muted h6">{{ post.date_posted }}</p>
+                            <p class="card-text rating">Rating: {{ post.total_votes }}</p>
                         </div>
                     </div>
                 </div>

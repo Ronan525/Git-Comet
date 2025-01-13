@@ -12,8 +12,16 @@ a {
     color: inherit;
 }
 
+a:visited {
+    color: inherit; /* Ensure visited links have the same color as unvisited links */
+}
+
 a:hover {
     color: #E84610;
+}
+
+a:hover:visited {
+    color: #E84610; /* Ensure visited links maintain the hover color */
 }
 
 /* Typography */
@@ -167,6 +175,14 @@ footer {
     color: #E84610;
 }
 
+.post-link:visited {
+    color: #f5f5f5; /* Ensure visited post links have the same color as unvisited links */
+}
+
+.post-link:hover:visited {
+    color: #E84610; /* Ensure visited post links maintain the hover color */
+}
+
 /* Buttons */
 .btn-signup,
 .btn-edit {
@@ -205,4 +221,58 @@ footer {
 
 .approval {
     color: rgb(222, 146, 168);
+}
+
+/* Contact Us Form Styles */
+.contact-form-container {
+    background-color: #2e2e2e;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container h1 {
+    color: #E84610;
+}
+
+.contact-form-container p {
+    color: #b0b0b0;
+}
+
+.contact-form-container .form-control {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border: 1px solid #444;
+}
+
+.contact-form-container .form-control:focus {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border-color: #E84610;
+    box-shadow: none;
+}
+
+.contact-form-container .btn-primary {
+    background-color: #E84610;
+    border-color: #E84610;
+}
+
+.contact-form-container .btn-primary:hover {
+    background-color: #d73c0f;
+    border-color: #d73c0f;
+}
+
+/* Custom Alert Styles */
+.alert-custom {
+    background-color: #E84610; /* Match the site's accent color */
+    color: #f5f5f5; /* Light text color for contrast */
+    border: 1px solid #d73c0f; /* Slightly darker border */
+}
+
+.alert-custom p {
+    color: inherit; /* Inherit color from parent */
+    border: 1px solid #f5f5f5; /* Light border for contrast */
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: #d73c0f; /* Slightly darker background for the paragraph */
 }

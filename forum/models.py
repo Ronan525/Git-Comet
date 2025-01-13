@@ -48,3 +48,26 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+# This is the Rating model. It has a ForeignKey to the Post model and the User model, which means that each rating is associated with a single post and a single user.
+class Rating(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='ratings')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings')
+    vote = models.IntegerField(choices=[(1, 'Upvote'), (-1, 'Downvote')])
+    total_votes = models.IntegerField(default=0)
+
+    class Meta:
+        unique_together = ('post', 'user')
+
+    def __str__(self):
+        return f"{self.user.username} - {self.vote}"
+
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    date_submitted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Message from {self.name} ({self.email})"
