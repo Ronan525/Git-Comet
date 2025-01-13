@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views import View
 from django.db import models  # Import models
@@ -39,3 +39,11 @@ class ContactUsView(View):
             # Display a success message
             return render(request, self.template_name, {'form': ContactUsForm(), 'success': True})
         return render(request, self.template_name, {'form': form})
+
+class PostDetailView(generic.DetailView):
+    model = Post
+    template_name = 'forum/post_detail.html'
+    context_object_name = 'post'
+
+    def get_object(self):
+        return get_object_or_404(Post, slug=self.kwargs['slug'])
