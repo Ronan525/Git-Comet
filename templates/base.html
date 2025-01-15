@@ -53,12 +53,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == bio_url %}active{%endif%}" aria-current="page" href="{% url 'mybio' %}">Bio</a>
+                        <a class="nav-link {% if request.path == bio_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'mybio' %}">Bio</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <span class="navbar-text">
-                    <img src="{% static 'images/nobody.jpg' %}" alt="Git Comet" width="50" height="50" data-bs-toggle="collapse" data-bs-target="#userMenu" aria-controls="userMenu" aria-expanded="false" aria-label="Toggle user menu">
+                    <img src="{% static 'images/nobody.jpg' %}" alt="Git Comet" width="50" height="50"
+                        data-bs-toggle="collapse" data-bs-target="#userMenu" aria-controls="userMenu"
+                        aria-expanded="false" aria-label="Toggle user menu">
                 </span>
                 <div class="collapse" id="userMenu">
                     <ul class="navbar-nav">
@@ -89,7 +94,6 @@
             {% endblock content %}
         </div>
     </main>
-
     <footer class="text-center py-3 shadow-sm mt-auto">
         <div class="container">
             <div class="social-links">
@@ -108,9 +112,43 @@
         </div>
     </footer>
 
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signUpModalLabel">Join Git Comet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Sign up now to join the Git Comet community and enjoy exclusive features!</p>
+                    <br>
+                    <p>You can make an account in your own time by selecting the profile icon on the top right corner of the screen.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'account_signup' %}" class="btn btn-signup">Sign Up</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Another Time</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
+    {% if not user.is_authenticated %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('signUpModalShown')) {
+                setTimeout(function() {
+                    var signUpModal = new bootstrap.Modal(document.getElementById('signUpModal'));
+                    signUpModal.show();
+                    localStorage.setItem('signUpModalShown', 'true');
+                }, 5000); // 5 seconds
+            }
+        });
+    </script>
+    {% endif %}
 </body>
 
 </html>
