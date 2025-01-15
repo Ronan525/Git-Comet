@@ -410,3 +410,24 @@ footer {
 .form-check-label {
     color: #f5f5f5;
 }
+
+/* Custom Heading Styles */
+.posts-heading {
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom: 1px solid #E84610; /* Bottom border */
+    color: #f5f5f5;
+    padding: 0.5rem 1rem; /* Adjust padding to make the border horizontally smaller */
+    margin: 0 auto; /* Center the heading */
+    display: inline-block; /* Make the heading inline-block to respect the padding */
+    background: transparent;
+    text-align: center;
+}
+
+.post-row {
+    border-bottom: 1px solid #E84610; /* Bottom border */
+    border-left: 1px solid #E84610; /* Left border */
+    border-right: 1px solid #E84610; /* Right border */
+    border-top: 1px solid #E84610; /* Top border */
+}
