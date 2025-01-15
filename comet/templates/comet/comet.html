@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4 text-center">
+      <img src="{% static 'images/default.jpg' %}" width="75%" />
+    </div>
+    <div class="col-8">
+      <!-- Title goes between these h2 tags -->
+      <h2>{{ bio.title }}</h2>
+      <!-- Content goes directly underneath this -->
+      {{ bio.content | safe }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-right">
+      <!-- Updated on field goes in here -->
+      <p class="text-end"><em>Updated on: {{ bio.updated_on }}</em></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <a href="{% url 'mybio' %}">My Bio</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

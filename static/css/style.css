@@ -271,10 +271,7 @@ footer {
 
 .alert-custom p {
     color: inherit; /* Inherit color from parent */
-    border: 1px solid #f5f5f5; /* Light border for contrast */
     padding: 0.5rem;
-    border-radius: 4px;
-    background-color: #d73c0f; /* Slightly darker background for the paragraph */
 }
 
 /* Pagination Styles */

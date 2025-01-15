@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'forum',
+    'comet',
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 # Internationalization

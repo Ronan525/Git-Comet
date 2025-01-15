@@ -20,8 +20,10 @@ from forum.views import PostListView  # Import the PostListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),  # Path to allauth app
     path('summernote/', include('django_summernote.urls')),  # Path to django_summernote
     path('forum/', include('forum.urls')),  # Path to forum app
     path('accounts/', include('django.contrib.auth.urls')),  # Path to Django's built-in authentication views
     path('', PostListView.as_view(), name='home'),  # Default path to PostListView
+    path('comet/', include('comet.urls'), name='bio-urls'),  # Path to comet app
 ]
