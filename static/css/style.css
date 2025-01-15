@@ -214,6 +214,40 @@ footer {
     border: none;
 }
 
+.btn-signout {
+    background-color: #E84610; /* Site's accent color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-signout:hover,
+.btn-signout:focus {
+    background-color: #d73c0f; /* Slightly darker shade for hover/focus */
+    color: #fff; /* Ensure text color remains white */
+    outline: none;
+}
+
+.btn-secondary {
+    background-color: #444;
+    color: #f5f5f5;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #333; /* Slightly darker shade for hover/focus */
+    color: #f5f5f5; /* Ensure text color remains light */
+    outline: none;
+}
+
 /* Miscellaneous */
 .faded {
     color: rgb(172, 175, 175);
@@ -291,4 +325,70 @@ footer {
     color: #fff; /* Active text color */
     background-color: #E84610; /* Active background color */
     border-color: #E84610; /* Active border color */
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #2e2e2e;
+    color: #f5f5f5;
+}
+
+.modal-header {
+    border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+    border-top: 1px solid #444;
+}
+
+.btn-close {
+    background-color: #E84610;
+}
+
+.btn-secondary {
+    background-color: #444;
+    color: #f5f5f5;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #333; /* Slightly darker shade for hover/focus */
+    color: #f5f5f5; /* Ensure text color remains light */
+    outline: none;
+}
+
+/* Form Control Styles */
+.form-control.custom-input {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control.custom-input:focus {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border-color: #E84610;
+    box-shadow: none;
+}
+
+/* Form Check Styles */
+.form-check-input.custom-check {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
+.form-check-input.custom-check:checked {
+    background-color: #E84610;
+    border-color: #E84610;
+}
+
+.form-check-label {
+    color: #f5f5f5;
 }

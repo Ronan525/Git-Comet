@@ -157,3 +157,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1  # or the ID of the site you created
+
+LOGIN_REDIRECT_URL = '/comet/profile/'
+
+ACCOUNT_FORMS = {
+    'login': 'comet.forms.CustomLoginForm',
+}

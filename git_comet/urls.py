@@ -25,5 +25,5 @@ urlpatterns = [
     path('forum/', include('forum.urls')),  # Path to forum app
     path('accounts/', include('django.contrib.auth.urls')),  # Path to Django's built-in authentication views
     path('', PostListView.as_view(), name='home'),  # Default path to PostListView
-    path('comet/', include('comet.urls'), name='bio-urls'),  # Path to comet app
+    path('comet/', include('comet.urls')),  # Path to comet app
 ]
