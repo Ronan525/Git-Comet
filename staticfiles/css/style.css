@@ -106,8 +106,8 @@ footer {
 }
 
 .card-text {
-    font-size: 0.875rem;
-    color: #b0b0b0;
+    font-size: 1rem; /* Increase the font size */
+    color: #ffffff; /* Set the text color to solid white */
 }
 
 /* Image Container */
@@ -130,6 +130,14 @@ footer {
 .scale {
     width: 100%;
     height: auto;
+}
+/* Applies a border to post and comment cards */
+.post-content {
+    border: 1px solid #E84610;
+}
+
+.comment-content {
+    border: 1px solid #E84610;
 }
 
 /* Masthead */
@@ -358,6 +366,7 @@ footer {
     border-top: 1px solid #444; /* Border color */
 }
 
+/* Button Styles */
 .btn-primary {
     background-color: #E84610; /* Primary button color */
     border-color: #E84610; /* Primary button border color */
@@ -380,8 +389,46 @@ footer {
     border-color: #333; /* Darker shade for hover/focus */
 }
 
+/* Button Styles */
+.create-post-btn {
+    background: #E84610; /* Primary button color */
+    border-color: #E84610; /* Primary button border color */
+    color: #fff; /* Text color */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.create-post-btn:hover,
+.create-post-btn:focus {
+    background: transparent; /* Darker shade for hover/focus */
+    border-color: #E84610; /* Darker shade for hover/focus */
+    color: #fff; /* Ensure text color remains white */
+    outline: none;
+}
+
 /* Form Control Styles */
 .form-control.custom-input {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control.custom-input:focus {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border-color: #E84610;
+    box-shadow: none;
+}
+
+/* Ensure all text fields are the same length and height */
+.form-control.custom-input,
+.form-control.custom-input[type="text"],
+.form-control.custom-input[type="email"],
+.form-control.custom-input[type="password"] {
+    width: 100%;
+    height: 40px; /* Set a consistent height */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
     background-color: #1e1e1e;
     color: #f5f5f5;
     border: 1px solid #444;

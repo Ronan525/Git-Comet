@@ -121,12 +121,6 @@ class CommentUpdateView(View):
 
 @method_decorator(login_required, name='dispatch')
 class CommentDeleteView(View):
-    template_name = 'forum/comment_confirm_delete.html'
-
-    def get(self, request, pk):
-        comment = get_object_or_404(Comment, pk=pk, author=request.user)
-        return render(request, self.template_name, {'comment': comment})
-
     def post(self, request, pk):
         comment = get_object_or_404(Comment, pk=pk, author=request.user)
         post_slug = comment.post.slug
