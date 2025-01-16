@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views import View
 from django.db import models  # Import models
-from .models import Post, ContactMessage
-from .forms import ContactUsForm
+from .models import Post, ContactMessage, Comment
+from .forms import ContactUsForm, CommentForm
 
 # Create your views here.
 
@@ -47,3 +47,30 @@ class PostDetailView(generic.DetailView):
 
     def get_object(self):
         return get_object_or_404(Post, slug=self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(post=self.get_object()).order_by('-date_posted')
+        context['form'] = CommentForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        post = self.get_object()
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('post-detail', slug=post.slug)
+        context = self.get_context_data()
+        context['form'] = form
+        return render(request, self.template_name, context)
+
+class PostCommentsView(View):
+    template_name = 'forum/post_detail.html'
+
+    def get(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+        comments = Comment.objects.filter(post=post).order_by('-date_posted')
+        return render(request, self.template_name, {'post': post, 'comments': comments})

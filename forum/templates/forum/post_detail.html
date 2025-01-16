@@ -32,4 +32,46 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="comments-heading">Comments</h2>
+            {% for comment in comments %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p><strong>{{ comment.author.username }}</strong> said:</p>
+                        <p>{{ comment.content }}</p>
+                        <p><small>{{ comment.date_posted }}</small></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 card mb-4 mt-3 left top">
+            <div class="card-body">
+                <h2 class="comments-heading">Leave a Comment</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p>You must be <a href="{% url 'account_login' %}">logged in</a> to leave a comment.</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 {% endblock content %}
