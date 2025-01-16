@@ -4,5 +4,82 @@
 <div class="container mt-5">
     <h1>Profile</h1>
     <p>Welcome, {{ user.username }}!</p>
+    <form id="profile-picture-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="dropzone" class="dropzone">
+            <p>Drag and drop your profile picture here, or click to select a file.</p>
+            <input type="file" name="profile_picture" id="fileupload" style="display: none;">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+    <div class="mt-3">
+        <img src="{{ user.userprofile.profile_picture }}" alt="Profile Picture" class="img-thumbnail" width="150" height="150">
+    </div>
 </div>
+
+<script>
+$(document).ready(function () {
+    var cloudinaryUrl = 'https://api.cloudinary.com/v1_1/your_cloud_name/image/upload';
+    var uploadPreset = 'your_upload_preset';
+
+    $('#dropzone').on('click', function () {
+        $('#fileupload').click();
+    });
+
+    $('#fileupload').fileupload({
+        url: cloudinaryUrl,
+        dataType: 'json',
+        formData: {
+            upload_preset: uploadPreset
+        },
+        done: function (e, data) {
+            var imageUrl = data.result.secure_url;
+            $.ajax({
+                url: '{% url "profile" %}',
+                method: 'POST',
+                data: {
+                    profile_picture: imageUrl,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function () {
+                    location.reload();
+                }
+            });
+        }
+    });
+
+    $('#dropzone').on('dragover', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).addClass('dragover');
+    });
+
+    $('#dropzone').on('dragleave', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).removeClass('dragover');
+    });
+
+    $('#dropzone').on('drop', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).removeClass('dragover');
+        var files = e.originalEvent.dataTransfer.files;
+        $('#fileupload').fileupload('add', { files: files });
+    });
+});
+</script>
+
+<style>
+.dropzone {
+    border: 2px dashed #007bff;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.dropzone.dragover {
+    border-color: #0056b3;
+    background-color: #e9ecef;
+}
+</style>
 {% endblock %}
