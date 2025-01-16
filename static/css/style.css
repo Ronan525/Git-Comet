@@ -426,8 +426,5 @@ footer {
 }
 
 .post-row {
-    border-bottom: 1px solid #E84610; /* Bottom border */
-    border-left: 1px solid #E84610; /* Left border */
-    border-right: 1px solid #E84610; /* Right border */
-    border-top: 1px solid #E84610; /* Top border */
+    border: 1px solid #E84610;
 }
