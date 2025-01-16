@@ -106,8 +106,8 @@ footer {
 }
 
 .card-text {
-    font-size: 0.875rem;
-    color: #b0b0b0;
+    font-size: 1rem; /* Increase the font size */
+    color: #ffffff; /* Set the text color to solid white */
 }
 
 /* Image Container */
@@ -130,6 +130,14 @@ footer {
 .scale {
     width: 100%;
     height: auto;
+}
+/* Applies a border to post and comment cards */
+.post-content {
+    border: 1px solid #E84610;
+}
+
+.comment-content {
+    border: 1px solid #E84610;
 }
 
 /* Masthead */
