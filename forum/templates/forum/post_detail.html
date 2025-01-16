@@ -42,6 +42,12 @@
                         <p><strong>{{ comment.author.username }}</strong> said:</p>
                         <p>{{ comment.content }}</p>
                         <p><small>{{ comment.date_posted }}</small></p>
+                        {% if comment.author == user %}
+                            <form method="post" action="{% url 'comment-delete' comment.pk %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

@@ -95,6 +95,37 @@ class PostCreateView(View):
             return redirect('post-detail', slug=post.slug)
         return render(request, self.template_name, {'form': form})
 
+@method_decorator(login_required, name='dispatch')
+class CommentUpdateView(View):
+    template_name = 'forum/comment_form.html'
+
+    def get(self, request, pk):
+        comment = get_object_or_404(Comment, pk=pk, author=request.user)
+        form = CommentForm(instance=comment)
+        return render(request, self.template_name, {'form': form, 'comment': comment})
+
+    def post(self, request, pk):
+        comment = get_object_or_404(Comment, pk=pk, author=request.user)
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('post-detail', slug=comment.post.slug)
+        return render(request, self.template_name, {'form': form, 'comment': comment})
+
+@method_decorator(login_required, name='dispatch')
+class CommentDeleteView(View):
+    template_name = 'forum/comment_confirm_delete.html'
+
+    def get(self, request, pk):
+        comment = get_object_or_404(Comment, pk=pk, author=request.user)
+        return render(request, self.template_name, {'comment': comment})
+
+    def post(self, request, pk):
+        comment = get_object_or_404(Comment, pk=pk, author=request.user)
+        post_slug = comment.post.slug
+        comment.delete()
+        return redirect('post-detail', slug=post_slug)
+
 def upvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     rating, created = Rating.objects.get_or_create(post=post, user=request.user)
