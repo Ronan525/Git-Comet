@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment
+from .models import Comment, Post
 
 class ContactUsForm(forms.Form):
     name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -12,4 +12,16 @@ class CommentForm(forms.ModelForm):
         fields = ['content']
         widgets = {
             'content': forms.Textarea(attrs={'class': 'form-control custom-input', 'placeholder': 'Write your comment here...'}),
+        }
+
+class PostForm(forms.ModelForm):
+    draft = forms.BooleanField(required=False, label='Save as Draft')
+
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'excerpt']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control custom-input', 'placeholder': 'Title'}),
+            'content': forms.Textarea(attrs={'class': 'form-control custom-input', 'placeholder': 'Content'}),
+            'excerpt': forms.Textarea(attrs={'class': 'form-control custom-input', 'placeholder': 'Excerpt'}),
         }

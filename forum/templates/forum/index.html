@@ -17,6 +17,9 @@
 <div class="container-fluid post-row">
     <div class="row">
         <h1 class="posts-heading">Posts</h1>
+        {% if user.is_authenticated %}
+        <a href="{% url 'post-create' %}" class="btn btn-primary mb-3 create-post-btn">Create New Post</a>
+        {% endif %}
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">

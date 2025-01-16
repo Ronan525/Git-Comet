@@ -358,6 +358,7 @@ footer {
     border-top: 1px solid #444; /* Border color */
 }
 
+/* Button Styles */
 .btn-primary {
     background-color: #E84610; /* Primary button color */
     border-color: #E84610; /* Primary button border color */
@@ -378,6 +379,22 @@ footer {
 .btn-secondary:focus {
     background-color: #333; /* Darker shade for hover/focus */
     border-color: #333; /* Darker shade for hover/focus */
+}
+
+/* Button Styles */
+.create-post-btn {
+    background: #E84610; /* Primary button color */
+    border-color: #E84610; /* Primary button border color */
+    color: #fff; /* Text color */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.create-post-btn:hover,
+.create-post-btn:focus {
+    background: transparent; /* Darker shade for hover/focus */
+    border-color: #E84610; /* Darker shade for hover/focus */
+    color: #fff; /* Ensure text color remains white */
+    outline: none;
 }
 
 /* Form Control Styles */

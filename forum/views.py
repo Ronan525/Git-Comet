@@ -3,7 +3,9 @@ from django.views import generic
 from django.views import View
 from django.db import models  # Import models
 from .models import Post, ContactMessage, Comment, Rating
-from .forms import ContactUsForm, CommentForm
+from .forms import ContactUsForm, CommentForm, PostForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
@@ -74,6 +76,24 @@ class PostCommentsView(View):
         post = get_object_or_404(Post, slug=slug)
         comments = Comment.objects.filter(post=post).order_by('-date_posted')
         return render(request, self.template_name, {'post': post, 'comments': comments})
+
+@method_decorator(login_required, name='dispatch')
+class PostCreateView(View):
+    template_name = 'forum/post_form.html'
+
+    def get(self, request):
+        form = PostForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.status = 0 if form.cleaned_data['draft'] else 1
+            post.save()
+            return redirect('post-detail', slug=post.slug)
+        return render(request, self.template_name, {'form': form})
 
 def upvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
