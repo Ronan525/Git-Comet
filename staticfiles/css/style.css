@@ -184,16 +184,33 @@ footer {
 }
 
 /* Buttons */
-.btn-signup,
+.btn-signup {
+    background-color: #E84610; /* Site's accent color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-signup:hover,
+.btn-signup:focus {
+    background-color: #d73c0f; /* Slightly darker shade for hover/focus */
+    color: #fff; /* Ensure text color remains white */
+    outline: none;
+}
+
 .btn-edit {
-    background-color: #188181;
+    background-color: #E84610;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: transparent;
+    color: #E84610;
+    border: 1px solid #E84610;
 }
 
 .btn-like {
@@ -212,6 +229,40 @@ footer {
     color: #E84610;
     background: transparent;
     border: none;
+}
+
+.btn-signout {
+    background-color: #E84610; /* Site's accent color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-signout:hover,
+.btn-signout:focus {
+    background-color: #d73c0f; /* Slightly darker shade for hover/focus */
+    color: #fff; /* Ensure text color remains white */
+    outline: none;
+}
+
+.btn-secondary {
+    background-color: #444; /* Secondary button color */
+    color: #f5f5f5; /* Light text color */
+    border: none;
+    padding: 10px 20px; /* Same padding as btn-signup */
+    font-size: 1rem; /* Same font size as btn-signup */
+    border-radius: 4px; /* Same border radius as btn-signup */
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #333; /* Slightly darker shade for hover/focus */
+    color: #f5f5f5; /* Ensure text color remains light */
+    outline: none;
 }
 
 /* Miscellaneous */
@@ -271,10 +322,7 @@ footer {
 
 .alert-custom p {
     color: inherit; /* Inherit color from parent */
-    border: 1px solid #f5f5f5; /* Light border for contrast */
     padding: 0.5rem;
-    border-radius: 4px;
-    background-color: #d73c0f; /* Slightly darker background for the paragraph */
 }
 
 /* Pagination Styles */
@@ -294,4 +342,89 @@ footer {
     color: #fff; /* Active text color */
     background-color: #E84610; /* Active background color */
     border-color: #E84610; /* Active border color */
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #2e2e2e; /* Dark background color */
+    color: #f5f5f5; /* Light text color */
+}
+
+.modal-header {
+    border-bottom: 1px solid #444; /* Border color */
+}
+
+.modal-footer {
+    border-top: 1px solid #444; /* Border color */
+}
+
+.btn-primary {
+    background-color: #E84610; /* Primary button color */
+    border-color: #E84610; /* Primary button border color */
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #d73c0f; /* Darker shade for hover/focus */
+    border-color: #d73c0f; /* Darker shade for hover/focus */
+}
+
+.btn-secondary {
+    background-color: #444; /* Secondary button color */
+    border-color: #444; /* Secondary button border color */
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #333; /* Darker shade for hover/focus */
+    border-color: #333; /* Darker shade for hover/focus */
+}
+
+/* Form Control Styles */
+.form-control.custom-input {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control.custom-input:focus {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border-color: #E84610;
+    box-shadow: none;
+}
+
+/* Form Check Styles */
+.form-check-input.custom-check {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
+.form-check-input.custom-check:checked {
+    background-color: #E84610;
+    border-color: #E84610;
+}
+
+.form-check-label {
+    color: #f5f5f5;
+}
+
+/* Custom Heading Styles */
+.posts-heading {
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom: 1px solid #E84610; /* Bottom border */
+    color: #f5f5f5;
+    padding: 0.5rem 1rem; /* Adjust padding to make the border horizontally smaller */
+    margin: 0 auto; /* Center the heading */
+    display: inline-block; /* Make the heading inline-block to respect the padding */
+    background: transparent;
+    text-align: center;
+}
+
+.post-row {
+    border: 1px solid #E84610;
 }
