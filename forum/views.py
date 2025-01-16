@@ -54,17 +54,24 @@ class PostDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(post=self.get_object()).order_by('-date_posted')
         context['form'] = CommentForm()
+        context['post_form'] = PostForm(instance=self.get_object())
         return context
 
     def post(self, request, *args, **kwargs):
         post = self.get_object()
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.author = request.user
-            comment.save()
-            return redirect('post-detail', slug=post.slug)
+        if 'post_id' in request.POST:
+            form = PostForm(request.POST, instance=post)
+            if form.is_valid():
+                form.save()
+                return redirect('post-detail', slug=post.slug)
+        else:
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.post = post
+                comment.author = request.user
+                comment.save()
+                return redirect('post-detail', slug=post.slug)
         context = self.get_context_data()
         context['form'] = form
         return render(request, self.template_name, context)
@@ -125,6 +132,13 @@ class CommentDeleteView(View):
         post_slug = comment.post.slug
         comment.delete()
         return redirect('post-detail', slug=post_slug)
+
+@method_decorator(login_required, name='dispatch')
+class PostDeleteView(View):
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug, author=request.user)
+        post.delete()
+        return redirect('forum-home')
 
 def upvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
