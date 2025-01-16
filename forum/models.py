@@ -33,6 +33,8 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+        # Automatically upvote the post by the author
+        Rating.objects.get_or_create(post=self, user=self.author, defaults={'vote': 1})
 
 
 # This is the Comment model. It has a ForeignKey to the Post model, which means that each comment is associated with a single post.
@@ -53,7 +55,7 @@ class Comment(models.Model):
 class Rating(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='ratings')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings')
-    vote = models.IntegerField(choices=[(1, 'Upvote'), (-1, 'Downvote')])
+    vote = models.IntegerField(choices=[(1, 'Upvote'), (-1, 'Downvote')], null=False)
     total_votes = models.IntegerField(default=0)
 
     class Meta:

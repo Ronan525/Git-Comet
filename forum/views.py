@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views import View
 from django.db import models  # Import models
-from .models import Post, ContactMessage, Comment
+from .models import Post, ContactMessage, Comment, Rating
 from .forms import ContactUsForm, CommentForm
 
 # Create your views here.
@@ -74,3 +74,19 @@ class PostCommentsView(View):
         post = get_object_or_404(Post, slug=slug)
         comments = Comment.objects.filter(post=post).order_by('-date_posted')
         return render(request, self.template_name, {'post': post, 'comments': comments})
+
+def upvote(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    rating, created = Rating.objects.get_or_create(post=post, user=request.user)
+    if created or rating.vote != 1:
+        rating.vote = 1
+        rating.save()
+    return redirect('forum-home')
+
+def downvote(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    rating, created = Rating.objects.get_or_create(post=post, user=request.user)
+    if created or rating.vote != -1:
+        rating.vote = -1
+        rating.save()
+    return redirect('forum-home')
