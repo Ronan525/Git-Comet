@@ -30,6 +30,12 @@
                 {% if post.author == user %}
                     <button class="btn btn-sm btn-warning" onclick="showUpdateForm()">Update</button>
                     <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                    {% if post.status == 0 %}
+                    <form method="post" action="{% url 'post-publish' post.slug %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-success">Publish</button>
+                    </form>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

@@ -22,6 +22,12 @@ class PostListView(generic.ListView):
             post.total_votes = post.ratings.aggregate(total=models.Sum('vote'))['total'] or 0
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            context['draft_posts'] = Post.objects.filter(author=self.request.user, status=0)
+        return context
+
 class ContactUsView(View):
     template_name = 'forum/contact_us.html'
 
@@ -133,6 +139,14 @@ class PostDeleteView(View):
         post = get_object_or_404(Post, slug=slug, author=request.user)
         post.delete()
         return redirect('forum-home')
+
+@method_decorator(login_required, name='dispatch')
+class PostPublishView(View):
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug, author=request.user)
+        post.status = 1  # Set the status to published
+        post.save()
+        return redirect('post-detail', slug=post.slug)
 
 def upvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
