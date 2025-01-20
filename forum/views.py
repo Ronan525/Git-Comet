@@ -6,6 +6,7 @@ from .models import Post, ContactMessage, Comment, Rating
 from .forms import ContactUsForm, CommentForm, PostForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -148,6 +149,7 @@ class PostPublishView(View):
         post.save()
         return redirect('post-detail', slug=post.slug)
 
+@login_required
 def upvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     rating, created = Rating.objects.get_or_create(post=post, user=request.user)
@@ -156,6 +158,7 @@ def upvote(request, post_id):
         rating.save()
     return redirect('forum-home')
 
+@login_required
 def downvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     rating, created = Rating.objects.get_or_create(post=post, user=request.user)

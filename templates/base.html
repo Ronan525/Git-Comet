@@ -34,7 +34,7 @@
 
 </head>
 
-<body class="d-flex flex-column h-100 main-bg">
+<body class="d-flex flex-column h-100 main-bg {% if user.is_authenticated %}authenticated{% endif %}">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg shadow-sm">
@@ -145,6 +145,9 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- jQuery UI Widget -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
     <!-- jQuery File Upload Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.31.0/js/jquery.fileupload.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.31.0/js/jquery.iframe-transport.min.js"></script>
@@ -153,18 +156,9 @@
 
     <!-- Cloudinary jQuery Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-jquery-file-upload/2.5.0/cloudinary-jquery-file-upload.min.js"></script>
+
     {% if not user.is_authenticated %}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!localStorage.getItem('signUpModalShown')) {
-                setTimeout(function() {
-                    var signUpModal = new bootstrap.Modal(document.getElementById('signUpModal'));
-                    signUpModal.show();
-                    localStorage.setItem('signUpModalShown', 'true');
-                }, 5000); // 5 seconds
-            }
-        });
-    </script>
+    <script src="{% static 'js/timedModal.js' %}"></script>
     {% endif %}
 </body>
 

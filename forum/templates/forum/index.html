@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -41,11 +42,11 @@
                             <p class="card-text text-muted h6">{{ post.date_posted }}</p>
                             <p class="card-text rating">Rating: {{ post.total_votes }}</p>
                             <div class="vote-buttons">
-                                <form method="post" action="{% url 'upvote' post.id %}">
+                                <form method="post" action="{% url 'upvote' post.id %}" class="vote-form">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-link"><i class="fas fa-arrow-up"></i></button>
                                 </form>
-                                <form method="post" action="{% url 'downvote' post.id %}">
+                                <form method="post" action="{% url 'downvote' post.id %}" class="vote-form">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-link"><i class="fas fa-arrow-down"></i></button>
                                 </form>
@@ -122,5 +123,25 @@
     </ul>
 </nav>
 {% endif %}
+
+<!-- Modal -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="authModalLabel">Hold on there!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You must be signed in to rate a post.
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'account_login' %}" class="btn btn-signup modal-btn">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/authModal.js' %}"></script>
 
 {% endblock %}
