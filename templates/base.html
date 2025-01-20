@@ -61,15 +61,9 @@
                     {% endif %}
                 </ul>
                 <span class="navbar-text">
-                    {% if user.is_authenticated and user.userprofile.profile_picture %}
-                        <img src="{{ user.userprofile.profile_picture }}" alt="Profile Picture" width="50" height="50"
-                            data-bs-toggle="collapse" data-bs-target="#userMenu" aria-controls="userMenu"
-                            aria-expanded="false" aria-label="Toggle user menu">
-                    {% else %}
-                        <img src="{% static 'images/nobody.jpg' %}" alt="Git Comet" width="50" height="50"
-                            data-bs-toggle="collapse" data-bs-target="#userMenu" aria-controls="userMenu"
-                            aria-expanded="false" aria-label="Toggle user menu">
-                    {% endif %}
+                    <img src="{% static 'images/default-profile.png' %}" alt="Profile Picture" width="50" height="50"
+                        data-bs-toggle="collapse" data-bs-target="#userMenu" aria-controls="userMenu"
+                        aria-expanded="false" aria-label="Toggle user menu">
                 </span>
                 <div class="collapse" id="userMenu">
                     <ul class="navbar-nav">

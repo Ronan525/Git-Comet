@@ -6,8 +6,9 @@ from django.contrib.auth.models import User
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from .forms import ProfilePictureForm
+from .forms import ProfilePictureForm, UserProfileForm
 from .models import Bio, UserProfile
+from django.contrib.auth import update_session_auth_hash
 
 def mybio(request):
     bio = Bio.objects.all()
@@ -22,13 +23,21 @@ class UserProfileView(View):
 
 @login_required
 def profile(request):
-    # Ensure the UserProfile exists
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
     if request.method == 'POST':
-        profile_picture_url = request.POST.get('profile_picture')
-        if profile_picture_url:
-            user_profile.profile_picture = profile_picture_url
+        form = UserProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            password = form.cleaned_data.get('password')
+            if password:
+                user.set_password(password)
+                update_session_auth_hash(request, user)
+            user.save()
+            user_profile.profile_picture = form.cleaned_data.get('profile_picture')
             user_profile.save()
-            return JsonResponse({'status': 'success'})
-    return render(request, 'comet/profile.html')
+            return redirect('profile')
+    else:
+        form = UserProfileForm(instance=request.user)
+
+    return render(request, 'comet/profile.html', {'form': form})

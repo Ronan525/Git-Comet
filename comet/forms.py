@@ -1,6 +1,7 @@
 from django import forms
 from allauth.account.forms import LoginForm, SignupForm
 from .models import UserProfile
+from django.contrib.auth.models import User
 
 class CustomLoginForm(LoginForm):
     def __init__(self, *args, **kwargs):
@@ -23,3 +24,22 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['profile_picture']
+
+class UserProfileForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control custom-input', 'placeholder': 'Password'}), required=False)
+    profile_picture = forms.ChoiceField(
+        choices=[
+            ('/static/images/default-profile.png', 'Default Profile Picture'),
+            ('/static/images/profile-picture1.png', 'Profile Picture 1'),
+            ('/static/images/profile-picture2.png', 'Profile Picture 2')
+        ],
+        widget=forms.RadioSelect(attrs={'class': 'form-check-input custom-check'})
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control custom-input', 'placeholder': 'Username'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control custom-input', 'placeholder': 'Email'}),
+        }

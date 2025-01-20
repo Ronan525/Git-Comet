@@ -13,7 +13,7 @@ class Bio(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.URLField(max_length=200, default='https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg')
+    profile_picture = models.URLField(max_length=200, default='/static/images/default-profile.png')
 
     def __str__(self):
         return self.user.username
