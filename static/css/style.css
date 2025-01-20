@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     background-color: #1e1e1e;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Oxanium', sans-serif;
     color: #f5f5f5;
     margin: 0;
     padding: 0;
@@ -26,7 +26,7 @@ a:hover:visited {
 
 /* Typography */
 .brand {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Oxanium', sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #f5f5f5;
@@ -38,6 +38,20 @@ a:hover:visited {
 
 .thin {
     font-weight: 300;
+}
+
+.posts-heading,
+.draft-posts-heading {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom: 1px solid #E84610; /* Bottom border */
+    color: #f5f5f5;
+    padding: 0.5rem 1rem; /* Adjust padding to make the border horizontally smaller */
+    margin: 0 auto; /* Center the heading */
+    display: inline-block; /* Make the heading inline-block to respect the padding */
+    background: transparent;
+    text-align: center;
 }
 
 /* Background Colors */
@@ -59,7 +73,7 @@ a:hover:visited {
 }
 
 .navbar-brand {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Oxanium', sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #f5f5f5;
@@ -89,6 +103,10 @@ footer {
     background-color: #2e2e2e;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card:hover {
@@ -97,17 +115,32 @@ footer {
 
 .card-body {
     padding: 1rem;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
     color: #f5f5f5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .card-text {
     font-size: 1rem; /* Increase the font size */
     color: #ffffff; /* Set the text color to solid white */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card .vote-buttons {
+    margin-top: auto;
 }
 
 /* Image Container */
@@ -133,7 +166,28 @@ footer {
 }
 /* Applies a border to post and comment cards */
 .post-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #2e2e2e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #E84610;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.post-content:hover {
+    transform: translateY(-5px);
+}
+
+.post-content .card-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .comment-content {
@@ -356,6 +410,9 @@ footer {
 .modal-content {
     background-color: #2e2e2e; /* Dark background color */
     color: #f5f5f5; /* Light text color */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
@@ -459,18 +516,7 @@ footer {
 }
 
 /* Custom Heading Styles */
-.posts-heading {
-    font-family: 'Lato', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    border-bottom: 1px solid #E84610; /* Bottom border */
-    color: #f5f5f5;
-    padding: 0.5rem 1rem; /* Adjust padding to make the border horizontally smaller */
-    margin: 0 auto; /* Center the heading */
-    display: inline-block; /* Make the heading inline-block to respect the padding */
-    background: transparent;
-    text-align: center;
-}
+
 
 .post-row {
     border: 1px solid #E84610;
