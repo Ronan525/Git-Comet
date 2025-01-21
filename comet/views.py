@@ -40,4 +40,4 @@ def profile(request):
     else:
         form = UserProfileForm(instance=request.user)
 
-    return render(request, 'comet/profile.html', {'form': form})
+    return render(request, 'comet/profile.html', {'form': form, 'user_profile': user_profile})

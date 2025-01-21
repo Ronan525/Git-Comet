@@ -205,7 +205,7 @@ footer {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #2e2e2e;
     color: white;
     position: relative;
     padding: 1rem;
@@ -214,6 +214,13 @@ footer {
 .masthead-image {
     position: relative;
     overflow: hidden;
+    background-color: #1e1e1e; /* Match the site's dark background color */
+}
+
+.masthead-image img {
+    width: 100%;
+    height: auto;
+    opacity: 0.8; /* Optional: Add slight transparency to the image */
 }
 
 .masthead-image:after {
@@ -223,7 +230,7 @@ footer {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #2e2e2e;
     transform: skew(15deg);
     z-index: 100;
 }

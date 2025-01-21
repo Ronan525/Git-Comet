@@ -29,9 +29,9 @@ class UserProfileForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control custom-input', 'placeholder': 'Password'}), required=False)
     profile_picture = forms.ChoiceField(
         choices=[
-            ('/static/images/default-profile.png', 'Default Profile Picture'),
-            ('/static/images/profile-picture1.png', 'Profile Picture 1'),
-            ('/static/images/profile-picture2.png', 'Profile Picture 2')
+            ('/static/images/default-profile.png', 'Profile Picture 1'),
+            ('/static/images/profile-2.png', 'Profile Picture 2'),
+            ('/static/images/profile-3.png', 'Profile Picture 3')
         ],
         widget=forms.RadioSelect(attrs={'class': 'form-check-input custom-check'})
     )
