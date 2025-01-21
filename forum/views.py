@@ -152,17 +152,17 @@ class PostPublishView(View):
 @login_required
 def upvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    rating, created = Rating.objects.get_or_create(post=post, user=request.user)
-    if created or rating.vote != 1:
+    rating, created = Rating.objects.get_or_create(post=post, user=request.user, defaults={'vote': 1})
+    if not created and rating.vote != 1:
         rating.vote = 1
-        rating.save()
+        rating.save(update_fields=['vote'])
     return redirect('forum-home')
 
 @login_required
 def downvote(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    rating, created = Rating.objects.get_or_create(post=post, user=request.user)
-    if created or rating.vote != -1:
+    rating, created = Rating.objects.get_or_create(post=post, user=request.user, defaults={'vote': -1})
+    if not created and rating.vote != -1:
         rating.vote = -1
-        rating.save()
+        rating.save(update_fields=['vote'])
     return redirect('forum-home')

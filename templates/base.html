@@ -42,7 +42,13 @@
             <a class="navbar-brand" href="#">Git Comet</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                {% if user.is_authenticated %}
+                <img src="{{ user.userprofile.profile_picture }}" alt="Profile Picture" width="40" height="40"
+                    class="rounded-circle">
+                {% else %}
+                <img src="{% static 'images/nobody.jpg' %}" alt="Profile Picture" width="40" height="40"
+                    class="rounded-circle">
+                {% endif %}
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -60,36 +66,34 @@
                     </li>
                     {% endif %}
                 </ul>
-                <span class="navbar-text">
+                <span class="navbar-text d-lg-none">
                     {% if user.is_authenticated %}
                     <img src="{{ user.userprofile.profile_picture }}" alt="Profile Picture" width="50" height="50"
-                        data-bs-toggle="collapse" data-bs-target="#userMenu" aria-controls="userMenu"
-                        aria-expanded="false" aria-label="Toggle user menu">
+                        class="rounded-circle d-none">
                     {% else %}
-                    <img src="{% static 'images/default-profile.png' %}" alt="Profile Picture" width="50" height="50"
-                        data-bs-toggle="collapse" data-bs-target="#userMenu" aria-controls="userMenu"
-                        aria-expanded="false" aria-label="Toggle user menu">
+                    <img src="{% static 'images/nobody.jpg' %}" alt="Profile Picture" width="50" height="50"
+                        class="rounded-circle d-none">
                     {% endif %}
                 </span>
-                <div class="collapse" id="userMenu">
-                    <ul class="navbar-nav">
-                        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
-                        </li>
-                        {% endif %}
+                {% if user.is_authenticated %}
+                <div class="dropdown d-none d-lg-block">
+                    <img src="{{ user.userprofile.profile_picture }}" alt="Profile Picture" width="40" height="40"
+                        class="rounded-circle dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                     </ul>
                 </div>
+                {% else %}
+                <div class="dropdown d-none d-lg-block">
+                    <img src="{% static 'images/nobody.jpg' %}" alt="Profile Picture" width="40" height="40"
+                        class="rounded-circle dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
+                    </ul>
+                </div>
+                {% endif %}
             </div>
         </div>
     </nav>

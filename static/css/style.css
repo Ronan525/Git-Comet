@@ -529,3 +529,29 @@ footer {
     border: 1px solid #E84610;
 }
 
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    background-color: #2e2e2e; /* Dark background color */
+    border: 1px solid #444; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.dropdown-menu .dropdown-item {
+    color: #f5f5f5; /* Light text color */
+    padding: 10px 20px; /* Padding for items */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #1e1e1e; /* Slightly darker background on hover/focus */
+    color: #E84610; /* Accent color for text on hover/focus */
+    outline: none; /* Remove outline */
+}
+
+.dropdown-menu .dropdown-item.active {
+    background-color: #E84610; /* Active background color */
+    color: #fff; /* Active text color */
+}
+
