@@ -14,18 +14,4 @@ document.addEventListener('DOMContentLoaded', function() {
             signUpModal.show();
         }, 5000); // 5 seconds
     }
-
-    // Add event listener to hide the modal and set inert attribute
-    document.getElementById('signUpModal').addEventListener('hidden.bs.modal', function() {
-        document.querySelectorAll('[inert]').forEach(function(element) {
-            element.removeAttribute('inert');
-        });
-    });
-
-    // Add event listener to show the modal and set inert attribute
-    document.getElementById('signUpModal').addEventListener('show.bs.modal', function() {
-        document.querySelectorAll('body > *:not(#signUpModal)').forEach(function(element) {
-            element.setAttribute('inert', '');
-        });
-    });
 });

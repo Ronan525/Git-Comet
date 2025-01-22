@@ -11,7 +11,14 @@ from .models import Bio, UserProfile
 from django.contrib.auth import update_session_auth_hash
 
 def mybio(request):
-    bio = Bio.objects.all()
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        bio, created = Bio.objects.get_or_create(user=request.user)
+        bio.title = title
+        bio.content = content
+        bio.save()
+    bio = Bio.objects.filter(user=request.user).first()
     return render(request, 'comet/comet.html', {'bio': bio})
 
 class UserProfileView(View):
