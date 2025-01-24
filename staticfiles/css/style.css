@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     background-color: #1e1e1e;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Oxanium', sans-serif;
     color: #f5f5f5;
     margin: 0;
     padding: 0;
@@ -26,7 +26,7 @@ a:hover:visited {
 
 /* Typography */
 .brand {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Oxanium', sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #f5f5f5;
@@ -38,6 +38,20 @@ a:hover:visited {
 
 .thin {
     font-weight: 300;
+}
+
+.posts-heading,
+.draft-posts-heading {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom: 1px solid #E84610; /* Bottom border */
+    color: #f5f5f5;
+    padding: 0.5rem 1rem; /* Adjust padding to make the border horizontally smaller */
+    margin: 0 auto; /* Center the heading */
+    display: inline-block; /* Make the heading inline-block to respect the padding */
+    background: transparent;
+    text-align: center;
 }
 
 /* Background Colors */
@@ -59,7 +73,7 @@ a:hover:visited {
 }
 
 .navbar-brand {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Oxanium', sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #f5f5f5;
@@ -89,6 +103,10 @@ footer {
     background-color: #2e2e2e;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card:hover {
@@ -97,17 +115,32 @@ footer {
 
 .card-body {
     padding: 1rem;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
     color: #f5f5f5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .card-text {
     font-size: 1rem; /* Increase the font size */
     color: #ffffff; /* Set the text color to solid white */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card .vote-buttons {
+    margin-top: auto;
 }
 
 /* Image Container */
@@ -131,9 +164,32 @@ footer {
     width: 100%;
     height: auto;
 }
+
+
 /* Applies a border to post and comment cards */
 .post-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #2e2e2e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #E84610;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.post-content:hover {
+    transform: translateY(-5px);
+}
+
+.post-content .card-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .comment-content {
@@ -151,7 +207,7 @@ footer {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #2e2e2e;
     color: white;
     position: relative;
     padding: 1rem;
@@ -160,6 +216,13 @@ footer {
 .masthead-image {
     position: relative;
     overflow: hidden;
+    background-color: #1e1e1e; /* Match the site's dark background color */
+}
+
+.masthead-image img {
+    width: 100%;
+    height: auto;
+    opacity: 0.8; /* Optional: Add slight transparency to the image */
 }
 
 .masthead-image:after {
@@ -169,7 +232,7 @@ footer {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #2e2e2e;
     transform: skew(15deg);
     z-index: 100;
 }
@@ -356,6 +419,9 @@ footer {
 .modal-content {
     background-color: #2e2e2e; /* Dark background color */
     color: #f5f5f5; /* Light text color */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
@@ -459,19 +525,35 @@ footer {
 }
 
 /* Custom Heading Styles */
-.posts-heading {
-    font-family: 'Lato', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    border-bottom: 1px solid #E84610; /* Bottom border */
-    color: #f5f5f5;
-    padding: 0.5rem 1rem; /* Adjust padding to make the border horizontally smaller */
-    margin: 0 auto; /* Center the heading */
-    display: inline-block; /* Make the heading inline-block to respect the padding */
-    background: transparent;
-    text-align: center;
-}
+
 
 .post-row {
     border: 1px solid #E84610;
 }
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    background-color: #2e2e2e; /* Dark background color */
+    border: 1px solid #444; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.dropdown-menu .dropdown-item {
+    color: #f5f5f5; /* Light text color */
+    padding: 10px 20px; /* Padding for items */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #1e1e1e; /* Slightly darker background on hover/focus */
+    color: #E84610; /* Accent color for text on hover/focus */
+    outline: none; /* Remove outline */
+}
+
+.dropdown-menu .dropdown-item.active {
+    background-color: #E84610; /* Active background color */
+    color: #fff; /* Active text color */
+}
+
