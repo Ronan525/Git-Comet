@@ -1,18 +1,17 @@
-{% load static %}
-
-{% url 'home' as home_url %}
-{% url 'contact-us' as contact_us_url %}
-{% url 'bio' as bio_url %}
-{% url 'account_login' as login_url %}
-{% url 'account_signup' as signup_url %}
-{% url 'account_logout' as logout_url %}
-
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 
 <head>
     <title>Git Comet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% load static %}
+    {% url 'home' as home_url %}
+    {% url 'contact-us' as contact_us_url %}
+    {% url 'bio' as bio_url %}
+    {% url 'account_login' as login_url %}
+    {% url 'account_signup' as signup_url %}
+    {% url 'account_logout' as logout_url %}
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
