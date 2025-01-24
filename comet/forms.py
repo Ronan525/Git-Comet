@@ -33,7 +33,7 @@ class UserProfileForm(forms.ModelForm):
             ('/static/images/profile-2.png', 'Profile Picture 2'),
             ('/static/images/profile-3.png', 'Profile Picture 3')
         ],
-        widget=forms.RadioSelect(attrs={'class': 'form-check-input custom-check'})
+        widget=forms.Select(attrs={'class': 'form-control custom-input'})
     )
 
     class Meta:

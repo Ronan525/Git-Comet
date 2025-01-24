@@ -9,11 +9,8 @@
         <form method="post" action="{% url 'profile' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Update Profile</button>
+            <button type="submit" class="btn btn-signup">Update Profile</button>
         </form>
     </div>
 </div>
 {% endblock %}
-
-<!-- Get two more profile pictures and have them all lined up underneath the update profile button. When clicked, they must be automatically applied. -->
- <!-- This will involve removing the requirement to select a profile picture before updating username email password. -->

@@ -164,6 +164,8 @@ footer {
     width: 100%;
     height: auto;
 }
+
+
 /* Applies a border to post and comment cards */
 .post-content {
     display: flex;
