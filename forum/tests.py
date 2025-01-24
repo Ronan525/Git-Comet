@@ -1,6 +1,9 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Post, Comment, Rating, ContactMessage
+from django.urls import reverse, resolve
+from .views import PostListView, PostDetailView
+from .forms import CommentForm
 
 class PostModelTest(TestCase):
 
@@ -91,6 +94,7 @@ class RatingModelTest(TestCase):
             author=self.user,
             status=1
         )
+        Rating.objects.filter(post=self.post, user=self.user).delete()
         self.rating = Rating.objects.create(
             post=self.post,
             user=self.user,
@@ -133,3 +137,43 @@ class ContactMessageModelTest(TestCase):
 
     def test_contact_message_str_method(self):
         self.assertEqual(str(self.contact_message), 'Message from John Doe (john.doe@example.com)')
+
+class PostViewTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.post = Post.objects.create(
+            title='Test Post',
+            content='This is a test post.',
+            author=self.user,
+            status=1
+        )
+
+    def test_post_list_view(self):
+        response = self.client.get(reverse('forum-home'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'forum/index.html')
+
+    def test_post_detail_view(self):
+        response = self.client.get(reverse('post-detail', args=[self.post.slug]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'forum/post_detail.html')
+
+class CommentFormTest(TestCase):
+    def test_comment_form_valid(self):
+        form_data = {'content': 'This is a test comment.'}
+        form = CommentForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_comment_form_invalid(self):
+        form_data = {'content': ''}
+        form = CommentForm(data=form_data)
+        self.assertFalse(form.is_valid())
+
+class URLTests(TestCase):
+    def test_post_list_url_resolves(self):
+        url = reverse('forum-home')
+        self.assertEqual(resolve(url).func.view_class, PostListView)
+
+    def test_post_detail_url_resolves(self):
+        url = reverse('post-detail', args=['test-post'])
+        self.assertEqual(resolve(url).func.view_class, PostDetailView)
