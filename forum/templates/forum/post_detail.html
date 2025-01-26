@@ -24,9 +24,8 @@
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text">
-                    {{ post.content | safe }}
-                </p>
+                <p class="card-text">{{ post.content | safe }}</p>
+                
                 {% if post.author == user %}
                     <button class="btn btn-sm btn-warning" onclick="showUpdateForm()">Update</button>
                     <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
