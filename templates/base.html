@@ -1,18 +1,10 @@
-{% load static %}
-
-{% url 'home' as home_url %}
-{% url 'contact-us' as contact_us_url %}
-{% url 'bio' as bio_url %}
-{% url 'account_login' as login_url %}
-{% url 'account_signup' as signup_url %}
-{% url 'account_logout' as logout_url %}
-
 <!DOCTYPE html>
 <html class="h-100" lang="en">
-
 <head>
+    {% load static %}
     <title>Git Comet</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
@@ -32,6 +24,12 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    {% url 'home' as home_url %}
+    {% url 'contact-us' as contact_us_url %}
+    {% url 'bio' as bio_url %}
+    {% url 'account_login' as login_url %}
+    {% url 'account_signup' as signup_url %}
+    {% url 'account_logout' as logout_url %}
 </head>
 
 <body class="d-flex flex-column h-100 main-bg {% if user.is_authenticated %}authenticated{% endif %}">
@@ -57,7 +55,8 @@
                             href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a>
+                        <a class="nav-link {% if request.path == contact_us_url %}active{% endif %}"
+                            href="{% url 'contact-us' %}">Contact Us</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -181,5 +180,4 @@
     <script src="{% static 'js/timedModal.js' %}"></script>
     {% endif %}
 </body>
-
 </html>
