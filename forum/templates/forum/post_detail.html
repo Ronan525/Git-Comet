@@ -2,29 +2,6 @@
 {% block content %}
 {% load static %}
 
-<head>
-    <style>
-        /* Critical CSS */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .masthead {
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
-        .post-title {
-            font-size: 2em;
-            margin: 0;
-        }
-    </style>
-    <link rel="stylesheet" href="{% static 'css/non-critical.css' %}" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="{% static 'css/non-critical.css' %}"></noscript>
-    <script src="{% static 'js/critical.js' %}" defer></script>
-</head>
-
-<body>
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -157,7 +134,4 @@ function hideUpdateForm() {
 }
 </script>
 
-<script src="{% static 'js/non-critical.js' %}" async></script>
-
 {% endblock content %}
-</body>
