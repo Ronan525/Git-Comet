@@ -4,7 +4,19 @@ Git Comet is a web forum built for coders to ask questions, make connections, or
 
 ## Entity Relationship Diagram
 
-![Entity Relationship Diagram](static/images/git-comet-erd.png)
+<div style="text-align: center;">
+    <img src="static/images/git-comet-erd.png" alt="Lighthouse Test 3 Mobile" style="max-width: 31%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</div>
+
+## Wireframes
+
+<div style="text-align: center;">
+    <img src="static/images/Home.png" alt="Lighthouse Test 3 Mobile" style="max-width: 40%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/Contact Us.png" alt="Lighthouse Test 3 Desktop" style="max-width: 43.4%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/Edit Account.png" alt="Lighthouse Test 3 Desktop" style="max-width: 40%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</div>
+
+- You may have noticed that the wireframes look quite a bit different than the finished site. This is due to my scope and MVP changing as development continued. The most glaring difference is the footer. I decided to use a minimalistic footer simply because I believe it fits the site better. You may have also noticed the lack of an About page. This is because I didn't see the need for an About page. Instead, I chose to have a Blog Post created by an Admin account act as one. I figured this was better for the user experience whilst also aligning with the sites purpose.
 
 ## Project Structure
 
@@ -68,24 +80,44 @@ Overall, GitHub Copilot has significantly enhanced my productivity and in some c
 
 ## Deployment
 
-### Lighthouse and HTML5 Validation
+### Lighthouse Scores
 
 - **Lighthouse**: My first lighthouse test was extremely motivating. For mobile, I had a performance score of 92, accessibility score of 82, Best Practices score of 100, and an SEO score of 91. The desktop score was identical aside from performance which was at 98. I'm very happy with these results. Eventually, I began experimenting with further optimisations to increase site performance for mobile and desktop devices. Copilot suggested that I create two new JavaScript files, one for Critical JS, and the other for Non Critical JS. It also reccomended that I move critical CSS into base.html. After applying these, I deployed the site and tested it again, only to discover the sites JavaScript, certain CSS elements, and certain pages were completely broken. The only positive was a 1% improvement in desktop performance. For such a miniscule performance gain, I decided against applying these changes, and reverted to a previous version. The test at 4:52PM is test 1, and the test at 5:10PM/5:11PM is test 2.
 
 <div style="text-align: center;">
-    <img src="static/images/lighthouse-test1.png" alt="Lighthouse Test 1" style="max-width: 33.5%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    <img src="static/images/lighthouse-test2.png" alt="Lighthouse Test 2" style="max-width: 30%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/lighthouse-test1.png" alt="Lighthouse Test 1 Mobile" style="max-width: 33.5%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/lighthouse-test2.png" alt="Lighthouse Test 1 Desktop" style="max-width: 30%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 </div>
 <div style="text-align: center;">
-    <img src="static/images/lighthouse-test1d.png" alt="Lighthouse Test 1" style="max-width: 32%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    <img src="static/images/lighthouse-test2d.png" alt="Lighthouse Test 2" style="max-width: 31.5%; height: 40; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/lighthouse-test1d.png" alt="Lighthouse Test 2 Mobile" style="max-width: 32%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/lighthouse-test2d.png" alt="Lighthouse Test 2 Deskstop" style="max-width: 31.5%; height: 40; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 </div>
 
-- In response to the high, but still not satisfactory accessibility score of 82, I made further improvements to the site. The two largest issues the lighthouse test had regarding my sites accessibility was the colour of some text elements, it was deemed too similar to the background, hence unreadable. However, I have tested this myself using multiple people, viewing the site on two of the most common display types, OLED, and LCD. The purpose of this was to see if this was an issue that an actual living breathing human being might encounter. Once I had finished my little experiment using family and friends as guinea pigs, I came to the conclusion that the text was visible on all display types in every condition aside from LCD displays whilst outside. Despite this being a minority, I decided to change the text colour anyway, as despite the very particular conditions, it was still an issue that would effect a portion of the user base.
+- In response to the high, but still not satisfactory accessibility score of 82, I made further improvements to the site. The two largest issues the lighthouse test had regarding my sites accessibility was the colour of some text elements, it was deemed too similar to the background, hence unreadable. However, I have tested this myself using multiple people, viewing the site on two of the most common display types, OLED, and LCD. The purpose of this was to see if this was an issue that an actual living breathing human being might encounter. Once I had finished my little experiment using family and friends as guinea pigs, I came to the conclusion that the text was visible on all display types in every condition aside from LCD displays whilst outside. Despite this being a minority, I decided to change the text colour anyway, as despite the very particular conditions, it was still an issue that would effect a portion of the user base. This improved the sites accessibility score massively. It now rests at a score of 95.
+
+<div style="text-align: center;">
+    <img src="static/images/lighthouse-test3.png" alt="Lighthouse Test 3 Mobile" style="max-width: 31%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/lighthouse-test3d.png" alt="Lighthouse Test 3 Desktop" style="max-width: 31.4%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</div>
+
+- Although the mobile performance score dropped by 2, I am more than comfortable sacrificing such a small amount of performance in favour for a more accessible and responsive site. Overall, I'm immensely impressed with these scores.
+
+### W3C Validation
+
+- **W3C**: Throughout development, I had consciously been optimising my code ensuring that it was valid HTML5. Due to this, when it came time to do my first W3C validation test, I only had two errors, both on different sites. One error was seemingly a Heroku error (surprise surprise) as the validator could not connect to the page. The second error is seemingly unavoidable,as from what I can tell, the validator itself is incorrect. The error claims that there's _No p element in scope but a p end tag seen_, yet when checking the page source code at the line and column listed, this issue isn't present.
+
+<div style="text-align: center;">
+    <img src="static/images/validation-error1.png" alt="Lighthouse Test 3 Mobile" style="max-width: 21%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="static/images/validation-error2.png" alt="Lighthouse Test 3 Desktop" style="max-width: 42.075%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</div>
+
+- Despite these frustrations, I'm extremely happy with both the Lighthouse Scores, and the W3C Validation.
 
 ### Major Issues
 
-- **Profile Pictures**: Originally, my idea for Git Comet users to change their profile picture allowed users to upload custom images from their local machine to the site. However, I soon discovered that this was easier said than done, as not only was the implementation of this feature causing issues with HTML validation and site performances, but the JavaScript needed for a drag and drop system was proving to be time consuming and incompatible with many site elements. There was also the issue with accessibility, as the dropdown menu, one of the core functions of Git Comet, may blend into the background too well if the uploaded image was too similar to the sites colour scheme. Due to this, I altered the idea and settled on a preset list of profile pictures a signed in user can choose between. Thanfully, this was the only major issue I faced during development.
+- **Heroku**: The amount of issues I had deploying to Heroku is incredible. I must have jinxed myself early on in development as I had seen my colleagues have constant issues with Heroku, while I was sat there thinking "Oh god. Something bad is going to happen any minute now and it'll take ages to fix." and as I expected. It happened. To be completely honest, I have no idea what issue Heroku had with my project. I was getting errors relating to code which was 200% correct and working, whilst intentionally sabotaged code wasn't even mentioned in the error logs. Where my local server ran, the Heroku server crashed and burned, then flipped over, and exploded. With Heroku Test Deployment 10, the site began working again. I have no idea why. My best guess is Heroku servers operate under the "If it ain't broke, find an excuse as to why it's broke" philosophy
+
+- **Profile Pictures**: Originally, my idea for Git Comet users to change their profile picture allowed users to upload custom images from their local machine to the site. However, I soon discovered that this was easier said than done, as not only was the implementation of this feature causing issues with HTML validation and site performances, but the JavaScript needed for a drag and drop system was proving to be time consuming and incompatible with many site elements. There was also the issue with accessibility, as the dropdown menu, one of the core functions of Git Comet, may blend into the background too well if the uploaded image was too similar to the sites colour scheme. Due to this, I altered the idea and settled on a preset list of profile pictures a signed in user can choose between.
 
 ### Bug Fixes
 
