@@ -44,11 +44,11 @@
                             <div class="vote-buttons">
                                 <form method="post" action="{% url 'upvote' post.id %}" class="vote-form">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-link"><i class="fas fa-arrow-up"></i></button>
+                                    <button type="submit" class="btn btn-link" aria-label="Upvote"><i class="fas fa-arrow-up"></i></button>
                                 </form>
                                 <form method="post" action="{% url 'downvote' post.id %}" class="vote-form">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-link"><i class="fas fa-arrow-down"></i></button>
+                                    <button type="submit" class="btn btn-link" aria-label="Downvote"><i class="fas fa-arrow-down"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -86,11 +86,11 @@
                             <div class="vote-buttons">
                                 <form method="post" action="{% url 'upvote' post.id %}">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-link"><i class="fas fa-arrow-up"></i></button>
+                                    <button type="submit" class="btn btn-link" aria-label="Upvote"><i class="fas fa-arrow-up"></i></button>
                                 </form>
                                 <form method="post" action="{% url 'downvote' post.id %}">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-link"><i class="fas fa-arrow-down"></i></button>
+                                    <button type="submit" class="btn btn-link" aria-label="Downvote"><i class="fas fa-arrow-down"></i></button>
                                 </form>
                             </div>
                         </div>
