@@ -81,6 +81,7 @@ Overall, GitHub Copilot has significantly enhanced my productivity and in some c
     <img src="static/images/lighthouse-test2d.png" alt="Lighthouse Test 2" style="max-width: 33.1%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 </div>
 
+- In response to the high, but still not satisfactory accessibility score of 82, I made further improvements to the site. The two largest issues the lighthouse test had regarding my sites accessibility was the colour of some text elements, it was deemed too similar to the background, hence unreadable. However, I have tested this myself using multiple people, viewing the site on two of the most common display types, OLED, and LCD. The purpose of this was to see if this was an issue that an actual living breathing human being might encounter. Once I had finished my little experiment using family and friends as guinea pigs, I came to the conclusion that the text was visible on all display types in every condition aside from LCD displays whilst outside. Despite this being a minority, I decided to change the text colour anyway, as despite the very particular conditions, it was still an issue that would effect a portion of the user base.
 
 ### Major Issues
 

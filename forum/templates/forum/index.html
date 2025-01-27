@@ -39,7 +39,7 @@
                             <p class="card-text">{{ post.excerpt }}</p>
                             <h2 class="card-text">Author: {{ post.author }}</h2>
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.date_posted }}</p>
+                            <p class="card-text h6">{{ post.date_posted }}</p>
                             <p class="card-text rating">Rating: {{ post.total_votes }}</p>
                             <div class="vote-buttons">
                                 <form method="post" action="{% url 'upvote' post.id %}" class="vote-form">
@@ -81,7 +81,7 @@
                             <p class="card-text">{{ post.excerpt }}</p>
                             <h2 class="card-text">Author: {{ post.author }}</h2>
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.date_posted }}</p>
+                            <p class="card-text h6">{{ post.date_posted }}</p>
                             <p class="card-text rating">Rating: {{ post.total_votes }}</p>
                             <div class="vote-buttons">
                                 <form method="post" action="{% url 'upvote' post.id %}">
