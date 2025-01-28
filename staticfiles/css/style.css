@@ -139,8 +139,12 @@ footer {
     white-space: nowrap;
 }
 
-.card .vote-buttons {
-    margin-top: auto;
+.card-text-post {
+    font-size: 1rem; /* Increase the font size */
+    color: #ffffff; /* Set the text color to solid white */
+    overflow: visible; /* Allow text to overflow */
+    text-overflow: initial; /* Remove ellipsis */
+    white-space: normal; /* Allow text to wrap */
 }
 
 /* Image Container */
